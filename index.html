@@ -31,10 +31,10 @@
               </div>
               <div class="col-6">
                 <select class="form-select mb-3" id="select-time-unit" required>
-                  <option value="" disabled>Time period unit</option>
+                  <option value="" selected disabled>Time period unit</option>
                   <option value="seconds">Seconds</option>
                   <option value="minutes">Minutes</option>
-                  <option value="hours" selected>Hours</option>
+                  <option value="hours">Hours</option>
                   <option value="days">Days</option>
                 </select>
               </div>
@@ -45,7 +45,6 @@
               class="form-control mb-3"
               placeholder="Arrival rate (λ)"
               min="0"
-              value="18"
               required
             />
             <input
@@ -54,7 +53,6 @@
               class="form-control mb-3"
               placeholder="Service rate (μ)"
               min="0"
-              value="26"
               required
             />
             <button type="submit" class="btn btn-success">Calculate</button>
