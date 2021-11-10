@@ -4,6 +4,13 @@ formQueueData.onsubmit = (e) => {
   showSolution();
 };
 
+let btnCalculate = document.querySelector("#button-calculate");
+let clpSolution = document.querySelector("#collapse-solution");
+btnCalculate.onclick = () => {
+  if (!clpSolution.classList.contains("show"))
+    new bootstrap.Collapse(clpSolution);
+};
+
 function showSolution() {
   let arrivalRate = document.querySelector("#input-arrival-rate").value;
   let serviceRate = document.querySelector("#input-service-rate").value;
@@ -13,8 +20,8 @@ function showSolution() {
   container.innerHTML += utilityRate(arrivalRate, serviceRate);
   container.innerHTML += probabilityOf(0, arrivalRate, serviceRate);
   container.innerHTML += lengthOfQueue(arrivalRate, serviceRate);
-  container.innerHTML += waitingTimeInQueue(arrivalRate, serviceRate);
   container.innerHTML += waitingTime(arrivalRate, serviceRate);
+  container.innerHTML += waitingTimeInQueue(arrivalRate, serviceRate);
   container.innerHTML += waitingTimeInService(arrivalRate, serviceRate);
 
   MathJax.typeset();
