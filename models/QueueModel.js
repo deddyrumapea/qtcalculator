@@ -2,9 +2,10 @@ export default class QueueModel {
   static STORAGE_KEY = "queue_storage";
   static STORAGE_CAPACITY = 4;
 
-  constructor(lambda, mu) {
+  constructor(lambda, mu, timeUnit) {
     this.lambda = lambda;
     this.mu = mu;
+    this.timeUnit = timeUnit;
     this.utilizationRate = lambda / mu;
     this.probabilityOfZero = 1 - this.utilizationRate;
     this.lengthOfQueue = Math.pow(lambda, 2) / (mu * (mu - lambda));
@@ -47,7 +48,7 @@ export default class QueueModel {
     \\[L_Q \\approx {${(
       Math.pow(lambda, 2) /
       (mu * (mu - lambda))
-    ).toFixed()}}\\]
+    ).toFixed()}\\;units}\\] 
     </p>`;
   }
 
@@ -56,7 +57,7 @@ export default class QueueModel {
     \\[W = {1 \\over \\mu - \\lambda}\\]
     \\[W = {1 \\over ${this.mu}- ${this.lambda}}\\]
     \\[W = {1 \\over ${this.mu - this.lambda}}\\]
-    \\[W = {${(1 / (this.mu - this.lambda)).toFixed(2)}}\\]
+    \\[W = {${(1 / (this.mu - this.lambda)).toFixed(2)}\\;${this.timeUnit}}\\]
     </p>`;
   }
 
@@ -69,7 +70,7 @@ export default class QueueModel {
     \\[W_Q = {${this.lambda} \\over ${this.mu * (this.mu - this.lambda)}}\\]
     \\[W_Q = {${(this.lambda / (this.mu * (this.mu - this.lambda))).toFixed(
       2
-    )}}\\]
+    )}\\;${this.timeUnit}}\\]
     </p>`;
   }
 
@@ -77,7 +78,7 @@ export default class QueueModel {
     return `<p>Average waiting time in service
     \\[W_S = {1 \\over \\mu}\\]
     \\[W_S = {1 \\over ${this.mu}}\\]
-    \\[W_S = ${(1 / this.mu).toFixed(2)}\\]
+    \\[W_S = ${(1 / this.mu).toFixed(2)}\\;${this.timeUnit}\\]
     </p>`;
   }
 }

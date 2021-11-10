@@ -21,7 +21,8 @@ btnCalculate.onclick = () => {
 function showSolution() {
   let arrivalRate = document.querySelector("#input-arrival-rate").value;
   let serviceRate = document.querySelector("#input-service-rate").value;
-  let queue = new QueueModel(arrivalRate, serviceRate);
+  let timeUnit = document.querySelector("#select-time-unit").value;
+  let queue = new QueueModel(arrivalRate, serviceRate, timeUnit);
 
   let container = document.querySelector("#solution-body");
   container.innerHTML =
