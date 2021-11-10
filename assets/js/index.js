@@ -9,6 +9,7 @@ function showSolution() {
   let serviceRate = document.querySelector("#input-service-rate").value;
 
   let container = document.querySelector("#solution-body");
+  container.innerHTML = "";
   container.innerHTML += utilityRate(arrivalRate, serviceRate);
   container.innerHTML += probabilityOf(0, arrivalRate, serviceRate);
   container.innerHTML += lengthOfQueue(arrivalRate, serviceRate);
