@@ -54,7 +54,6 @@ function showHistory() {
   let historyRows = "";
   history.forEach((item, i) => {
     historyRows += `<tr>
-    <th scope="row">${i + 1}</th>
     <td>${item.lambda}</td>
     <td>${item.mu}</td>
     <td>${item.utilizationRate.toFixed(2) * 100}%</td>
@@ -63,6 +62,7 @@ function showHistory() {
     <td>${item.waitingTime.toFixed(2)}</td>
     <td>${item.waitingTimeInQueue.toFixed(2)}</td>
     <td>${item.waitingTimeInService.toFixed(2)}</td>
+    <td>${item.timeUnit}</td>
     </tr>`;
   });
 
