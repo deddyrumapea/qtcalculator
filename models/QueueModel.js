@@ -61,7 +61,10 @@ export default class QueueModel {
     \\[W = {1 \\over ${this.mu}- ${this.lambda}}\\]
     \\[W = {1 \\over ${this.mu - this.lambda}}\\]
     \\[W = {${this.waitingTime}\\;${this.timeUnit}}\\]
-    \\[W = {${TimeUnitHelper.formatToHms(this.timeUnit, this.waitingTime)}}\\]
+    \\[W = {${TimeUnitHelper.formatToHms(
+      this.timeUnit,
+      this.waitingTime
+    )}per\\;unit}\\]
     </p>`;
   }
 
@@ -76,7 +79,7 @@ export default class QueueModel {
     \\[W_Q = {${TimeUnitHelper.formatToHms(
       this.timeUnit,
       this.waitingTimeInQueue
-    )}}\\]
+    )}per\\;unit}\\]
     </p>`;
   }
 
@@ -88,7 +91,7 @@ export default class QueueModel {
     \\[W_S = {${TimeUnitHelper.formatToHms(
       this.timeUnit,
       this.waitingTimeInService
-    )}}\\]
+    )}per\\;unit}\\]
     </p>`;
   }
 }
