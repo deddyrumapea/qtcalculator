@@ -8,26 +8,30 @@ export default class QueueModel {
     this.lambda = lambda;
     this.mu = mu;
     this.timeUnit = timeUnit;
-    this.utilizationRate = lambda / mu;
-    this.probabilityOfZero = 1 - this.utilizationRate;
-    this.lengthOfQueue = Math.pow(lambda, 2) / (mu * (mu - lambda));
-    this.waitingTime = 1 / (mu - lambda);
-    this.waitingTimeInQueue = lambda / (mu * (mu - lambda));
-    this.waitingTimeInService = 1 / mu;
+    this.utilizationRate = parseFloat(lambda / mu).toFixed(3);
+    this.probabilityOfZero = parseFloat(1 - this.utilizationRate).toFixed(3);
+    this.lengthOfQueue = parseFloat(
+      Math.pow(lambda, 2) / (mu * (mu - lambda))
+    ).toFixed(3);
+    this.waitingTime = parseFloat(1 / (mu - lambda)).toFixed(3);
+    this.waitingTimeInQueue = parseFloat(lambda / (mu * (mu - lambda))).toFixed(
+      3
+    );
+    this.waitingTimeInService = parseFloat(1 / mu).toFixed(3);
   }
 
   writeUtilizationRate() {
     return `<p>Service utilization rate 
     \\[U = {\\lambda \\over \\mu}\\]
     \\[U = {${this.lambda} \\over ${this.mu}}\\]
-    \\[U = {${this.utilizationRate.toFixed(3)}}\\]
-    \\[U = {${(this.utilizationRate.toFixed(3) * 100).toFixed(1)}}\\%\\]
+    \\[U = {${this.utilizationRate}}\\]
+    \\[U = {${(this.utilizationRate * 100).toFixed(1)}}\\%\\]
     </p>
     `;
   }
 
   writeProbabilityOf(n) {
-    let util = (this.lambda / this.mu).toFixed(3);
+    let util = this.utilizationRate;
     let probability = `<p>Probability of zero customers
     \\[P_n = (1 - U) \\times U^n\\]
     \\[P_${n} = (1 - ${util}) \\times ${util}^${n}\\]
@@ -46,8 +50,8 @@ export default class QueueModel {
     \\[L_Q = {${Math.pow(lambda, 2)} \\over ${mu}(${mu - lambda})}\\]
     \\[L_Q = {${Math.pow(lambda, 2)} \\over ${mu * (mu - lambda)}}\\]
     \\[L_Q = {${Math.pow(lambda, 2)} \\over ${mu * (mu - lambda)}}\\]
-    \\[L_Q = {${this.lengthOfQueue.toFixed(3)}}\\]
-    \\[L_Q \\approx {${this.lengthOfQueue.toFixed()}\\;units}\\] 
+    \\[L_Q = {${this.lengthOfQueue}}\\]
+    \\[L_Q \\approx {${parseFloat(this.lengthOfQueue).toFixed()}\\;units}\\] 
     </p>`;
   }
 
@@ -56,11 +60,8 @@ export default class QueueModel {
     \\[W = {1 \\over \\mu - \\lambda}\\]
     \\[W = {1 \\over ${this.mu}- ${this.lambda}}\\]
     \\[W = {1 \\over ${this.mu - this.lambda}}\\]
-    \\[W = {${this.waitingTime.toFixed(3)}\\;${this.timeUnit}}\\]
-    \\[W = {${TimeUnitHelper.formatToHms(
-      this.timeUnit,
-      this.waitingTime.toFixed(3)
-    )}}\\]
+    \\[W = {${this.waitingTime}\\;${this.timeUnit}}\\]
+    \\[W = {${TimeUnitHelper.formatToHms(this.timeUnit, this.waitingTime)}}\\]
     </p>`;
   }
 
@@ -71,10 +72,10 @@ export default class QueueModel {
     \\[W_Q = {${this.lambda} \\over ${this.mu}(${this.mu - this.lambda})}\\]
     \\[W_Q = {${this.lambda} \\over ${this.mu * (this.mu - this.lambda)}}\\]
     \\[W_Q = {${this.lambda} \\over ${this.mu * (this.mu - this.lambda)}}\\]
-    \\[W_Q = {${this.waitingTimeInQueue.toFixed(3)}\\;${this.timeUnit}}\\]
+    \\[W_Q = {${this.waitingTimeInQueue}\\;${this.timeUnit}}\\]
     \\[W_Q = {${TimeUnitHelper.formatToHms(
       this.timeUnit,
-      this.waitingTimeInQueue.toFixed(3)
+      this.waitingTimeInQueue
     )}}\\]
     </p>`;
   }
@@ -83,10 +84,10 @@ export default class QueueModel {
     return `<p>Average waiting time in service
     \\[W_S = {1 \\over \\mu}\\]
     \\[W_S = {1 \\over ${this.mu}}\\]
-    \\[W_S = ${this.waitingTimeInService.toFixed(3)}\\;${this.timeUnit}\\]
+    \\[W_S = ${this.waitingTimeInService}\\;${this.timeUnit}\\]
     \\[W_S = {${TimeUnitHelper.formatToHms(
       this.timeUnit,
-      this.waitingTimeInService.toFixed(3)
+      this.waitingTimeInService
     )}}\\]
     </p>`;
   }

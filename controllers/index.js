@@ -56,12 +56,12 @@ function showHistory() {
     historyRows += `<tr>
     <td>${item.lambda}</td>
     <td>${item.mu}</td>
-    <td>${item.utilizationRate.toFixed(2) * 100}%</td>
-    <td>${item.probabilityOfZero.toFixed(2)}</td>
-    <td>${item.lengthOfQueue.toFixed(2)}</td>
-    <td>${item.waitingTime.toFixed(2)}</td>
-    <td>${item.waitingTimeInQueue.toFixed(2)}</td>
-    <td>${item.waitingTimeInService.toFixed(2)}</td>
+    <td>${(item.utilizationRate * 100).toFixed(1)}%</td>
+    <td>${item.probabilityOfZero}</td>
+    <td>${item.lengthOfQueue}</td>
+    <td>${item.waitingTime}</td>
+    <td>${item.waitingTimeInQueue}</td>
+    <td>${item.waitingTimeInService}</td>
     <td>${item.timeUnit}</td>
     </tr>`;
   });
