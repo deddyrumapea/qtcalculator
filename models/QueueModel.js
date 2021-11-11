@@ -32,7 +32,7 @@ export default class QueueModel {
 
   writeProbabilityOf(n) {
     let util = this.utilizationRate;
-    let probability = `<p>Probability of zero customers
+    let probability = `<p>Probability of ${n} units in queue
     \\[P_n = (1 - U) \\times U^n\\]
     \\[P_${n} = (1 - ${util}) \\times ${util}^${n}\\]
     \\[P_${n} = (${(1 - util).toFixed(3)}) \\times ${Math.pow(util, n)}\\]
