@@ -1,6 +1,5 @@
 # QTCalculator
- A cute queueing theory calculator
-
+ A cute queueing theory calculator. [Go to the website](https://deddyromnan.github.io/qtcalculator/).
 
 |![image](https://user-images.githubusercontent.com/14845590/175760993-ed12755a-f036-42e0-9125-bc6652e3cc95.png)|![image](https://user-images.githubusercontent.com/14845590/175761010-e05a4b31-30d3-49ae-98bd-a620fa20bc3f.png)|
 |-|-|
